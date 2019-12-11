@@ -63,7 +63,7 @@
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
 						<label for="form_control_1">Trạng thái danh mục</label>
-						<select name="category_type" class="form-control">
+						<select name="status" class="form-control">
 							<option value="1">Hiển thị</option>
 							<option value="0">Ẩn</option>
 						</select>

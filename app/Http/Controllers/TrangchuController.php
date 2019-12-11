@@ -31,7 +31,7 @@ class TrangchuController extends Controller
                 $slideshow= Slideshowchildren::all()->rand(1);
             }      
         }
-        $model = DB::table('product')->orderBy('views', 'desc')->take(5)->get();
+        $model = DB::table('product')->orderBy('views', 'desc')->take(9)->get();
         $post = DB::table('post')->where('status',2)->orderBy('views', 'desc')->take(3)->get();
         return view('home', compact('category_product','category_post','model','post','slideshow','slide'));
     }
@@ -40,7 +40,7 @@ class TrangchuController extends Controller
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
         $cate=Category::find($id);
-        $model = Product::all()->where('category_id','=',$id);
+        $model = Product::where('category_id','=',$id)->where('status','=',1)->paginate(9);
         return view('sanpham', compact('category_product','category_post','model','cate'));
     }
 

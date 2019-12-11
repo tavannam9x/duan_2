@@ -15,6 +15,8 @@
 <body>
 
     <!-- Main-Header -->
+        
+    <div class="main-header">
         @include('shop.header')
     </div>
 
@@ -52,8 +54,8 @@
                         <!-- phần này là inclu cái đánh giá sao nhé-->
                         @include('shop.dist.star')
 
-                        <p> {{$cate->price}} VNĐ</p>
-                        <p style="text-decoration:line-through;"> {{$cate->sell_price}} VNĐ</p>
+                        <p style="text-decoration:line-through;"> {{$cate->price}} VNĐ</p>
+                        <p> {{$cate->sell_price}} VNĐ</p>
                         <p> Nguồn gốc: Việt Nam </p>
                         <p> Khối lượng: 1kg/1hộp </p>
                         <p> {{$cate->short_desc}} </p>
@@ -133,7 +135,8 @@
                                 </a>
                             </div>
                             <div class="category-products-price">
-                                <span> {{$splq->list_price}} </span>
+                                <span> <p style="text-decoration:line-through;"> {{$cate->price}} VNĐ</p>
+                        <p> {{$cate->sell_price}} VNĐ</p> </span>
                             </div>
                         </div>
                     </div>

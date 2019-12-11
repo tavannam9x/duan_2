@@ -53,10 +53,10 @@
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
-						<input type="text" name="list_price" value="" class="form-control">
+						<input type="text" name="price" value="" class="form-control">
 						<label for="form_control_1">Giá niêm yết sản phẩm</label>
-						@if($errors->first('list_price'))
-						<span class="text-danger">{{$errors->first('list_price')}}</span>
+						@if($errors->first('price'))
+						<span class="text-danger">{{$errors->first('price')}}</span>
 						@endif
 					</div>
 				</div>

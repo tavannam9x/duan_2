@@ -45,6 +45,7 @@
                 <h2 title="Tin tức"> Tin Tức </h2>
                 <div class="row">
                     @foreach($model as $post)
+                    @if($post->status==2)
                     <div class="col-md-4">
                         <div class="box-blog">
                             <div class="blog-img">
@@ -54,7 +55,7 @@
                             </div>
                             <div class="blog-content">
                                 <a href="{{route('chitietbv', ['id' => $post->id])}}"> {{$post->title}} </a>
-                                <p> {{$post->short_desc}}</p>
+                                <p> {!!Str::limit($post->short_desc, $limit = 100, $end = '...')!!}</p>
                                 <div class="day-blog" style="margin: 5px 0;">
                                     <span class="post-time">
                                         <i class="fa fa-user" aria-hidden="true"></i> {{$post->author}}
@@ -67,6 +68,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     @endforeach
                 </div>
             </div>

@@ -53,10 +53,7 @@ class ProductController extends Controller
         $cates = Category::all();
         return view('product.edit-form',compact('model', 'products', 'cates'));
     }
-    public function editStatus($id){
-        $model = Product::find($id);
-        return view('product.edit-status',compact('model'));
-    }
+
     public function saveEdit(ProductRequest $request){
         $model = Product::find($request->id);
         if($request->hasFile('image')){
@@ -64,17 +61,13 @@ class ProductController extends Controller
             str_replace(' ', '-', uniqid() . '-' .$request->image->getClientOriginalName()));
             $model->image = '../images/'.$path;
         }
-        if($request->status == null){
-            $model->status = 0;
-        }
         $model->fill($request->all());
-
-        //  if ($post) {
-        // alert()->success('Post Created', 'Successfully'); // hoặc có thể dùng alert('Post Created','Successfully', 'success');
-        // }
-        //dd($model);
         $model->save();
         return redirect(route('home'));
+    }
+    public function editStatus($id){
+        $model = Product::find($id);
+        return view('product.edit-status',compact('model'));
     }
 
     public function saveEdits(Request $request){

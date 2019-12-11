@@ -53,9 +53,9 @@
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating">
 					<div class="input-icon right">
-						<input type="text" name="list_price" value="{{old('list_price', $model->list_price)}}" class="form-control">
+						<input type="text" name="price" value="{{old('price', $model->price)}}" class="form-control">
 						<label for="form_control_1">Giá niêm yết sản phẩm</label>
-						@if($errors->first('list_price'))
+						@if($errors->first('price'))
 						<span class="text-danger">{{$errors->first('list_price')}}</span>
 						@endif
 					</div>
@@ -78,14 +78,17 @@
 						@endif
 					</div>
 				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating">
+				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
-						<input type="text" name="description" value="{{old('description', $model->description)}}" class="form-control">
-						<label for="form_control_1">Chi tiết sản phẩm</label>
-						@if($errors->first('description'))
-						<span class="text-danger">{{$errors->first('description')}}</span>
-						@endif
+						<textarea id="demo" class="form-control cheditor" rows="5" name="description">{{old('description', $model->description)}}</textarea>
+						<span class="help-block">Mời bạn nhập nội dung chi tiết sản phẩm</span>
+						<script type="text/javascript">
+							CKEDITOR.replace("demo");
+						</script>
 					</div>
+					@if($errors->first('description'))
+					<span class="text-danger">{{$errors->first('description')}}</span>
+					@endif
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating">
 					<div class="input-icon right">
@@ -101,32 +104,10 @@
 						</select>
 					</div>
 				</div>
-				<!-- <div class="form-group form-md-line-input has-success form-md-floating">
-					<div class="input-icon right">
-						<input type="text" name="amount" value="{{old('amount', $model->amount)}}" class="form-control">
-						<label for="form_control_1">Số lượng sản phẩm</label>
-						<span class="help-block">Mời bạn nhập số lượng sản phẩm</span>
-						<i class="icon-user"></i>
-					</div>
-				</div> -->
 				<div class="form-group form-md-line-input has-success form-md-floating">
 					<div class="input-icon right">
-						<input type="text" name="expiry_date" value="{{old('expiry_date', $model->expiry_date)}}" class="form-control">
+						<input type="date" name="expiry_date" value="{{old('expiry_date', $model->expiry_date)}}" class="form-control">
 						<label for="form_control_1">Hạn sử dụng</label>
-						@if($errors->first('expiry_date'))
-						<span class="text-danger">{{$errors->first('expiry_date')}}</span>
-						@endif
-					</div>
-				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating">
-					<div class="checkbox">
-					    <label>
-					    	<input type="checkbox"
-					    		@if($model->status)
-					    		checked 
-					    		@endif	
-					    	 name="status" value="1">Trạng thái
-					    </label>
 					</div>
 				</div>
 			</div>

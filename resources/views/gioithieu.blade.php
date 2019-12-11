@@ -47,6 +47,7 @@
             </div>
         </div> -->
 
+     <div class="main-header">
         @include('shop.header')
     </div>
 

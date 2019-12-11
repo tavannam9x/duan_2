@@ -34,12 +34,10 @@ class PostRequest extends FormRequest
             'short_desc' =>[
                 'required',
                 'min:20',
-                'max:300'
             ],
             'description' =>[
                 'required',
                 'min:20',
-                'max:2000'
             ]
 
 
@@ -63,10 +61,8 @@ class PostRequest extends FormRequest
             'author.required' => 'Bạn phải nhập tên tác giả',
             'short_desc.required' => 'Bạn phải nhập nội dung tóm tắt',
             'short_desc.min' => 'Nội dung tóm tắt phải lớn hơn 20 ký tự',
-            'short_desc.max' => 'Nội dung tóm tắt phải nhỏ hơn 300 ký tự',
             'description.required' => 'Bạn phải nhập nội dung sản phẩm',
             'description.min' => 'Nội dung sản phẩm phải lớn hơn 20 ký tự',
-            'description.max' => 'Nội dung sản phẩm phải nhỏ hơn 2000 ký tự',
         ];
 
     }

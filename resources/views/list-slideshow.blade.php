@@ -1,29 +1,28 @@
-@extends('layout2.main')
+@extends('admin_material_design.admin')
 @section('content')
-<div class="all" >
-<!-- <form method="get" action="" class="form-inline my-2 my-lg-5" style="padding-left: 520px;">
-    <input name="keyword" class="nav-item form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search" style="width: 500px">
-<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
-</form> -->
-  <div class="col-md-12" style=" margin-bottom: 20px;">
-  <div class="col-md-3"></div>
-  <div class="col-md-6">
-  <form method="get" action="" class="form-inline my-2 my-lg-5">
-    <div class="input-group">
-      <input type="search" name="keyword" class="form-control" placeholder="Tìm kiếm" style="width: 700px">
-      <slan class="input-group-btn">
-      <button type="submit" class="btn btn-success" style="height: 33px;"><i class="fa fa-search"></i></button>
-      </slan>
-    </div>
-  </form>
-  </div>
-  <div class="col-md-3"></div>
-  </div>
-
-
-
-
- <form action="" method="get">
+<div class="page-content-wrapper">
+    <div class="page-content">
+      <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+      <!-- /.modal -->
+      <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->     <!-- BEGIN PAGE HEADER-->
+      <h3 class="page-title">
+      Coolorganic <small>thực phẩm sạch</small>
+      </h3>
+      <div class="page-bar">
+        <ul class="page-breadcrumb">
+          <li>
+            <i class="fa fa-home"></i>
+            <a href="{{route('homeadmin')}}">Trang chủ</a>
+            <i class="fa fa-angle-right"></i>
+          </li>
+          <li>
+            <a href="{{route('adminsuper')}}">Sản phẩm</a>
+          </li>
+        </ul>
+      </div>
+      <!-- END PAGE HEADER-->
+      <!-- BEGIN DASHBOARD STATS -->
+      <form action="" method="get">
         <div class="row">
           <div class="col-md-12">
             <div class="col-md-3"></div>
@@ -106,10 +105,13 @@
               </tr>
               </table>
           </div>
+                  </div>
+                  <!-- END CONDENSED TABLE PORTLET-->
+                </div>
           </div>
-          <!-- END CONDENSED TABLE PORTLET-->
-        </div>
-  </div>
+      </div>
+
+    </div>
 </div>
-</div>
+
 @endsection();

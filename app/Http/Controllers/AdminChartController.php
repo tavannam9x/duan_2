@@ -7,6 +7,9 @@ use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Product;
+use App\Models\User;
+use App\Models\Post;
 class AdminChartController extends Controller
 {
     public function mostViewProduct()
@@ -87,6 +90,10 @@ class AdminChartController extends Controller
             $orders[8]->sums,
             $orders[9]->sums,
             ]);
-        return view('admin',compact('adminChart','adminChart2'));
+        $countpro = Product::where('status',1)->count();
+        $countview = Post::sum('views');
+        $countuser = User::count();
+        $countorder = Order::count();
+        return view('admin',compact('adminChart','adminChart2','countpro','countview','countuser','countorder'));
     }
 }

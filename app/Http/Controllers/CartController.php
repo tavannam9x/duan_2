@@ -86,7 +86,7 @@ class CartController extends Controller
 
             session()->put('cart', $cart);
 
-            session()->flash('success', 'Cart updated successfully');
+            session()->flash('success', 'Cập nhật số lượng thành công');
         }
     }
 
@@ -103,7 +103,8 @@ class CartController extends Controller
                 session()->put('cart', $cart);
             }
 
-            session()->flash('success', 'Product removed successfully');
+            session()->forget('coupon');
+            session()->flash('success', 'Xóa sản phẩm thành công');
         }
     }
 

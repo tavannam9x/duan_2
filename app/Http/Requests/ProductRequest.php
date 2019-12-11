@@ -28,7 +28,7 @@ class ProductRequest extends FormRequest
                 'min:3',
                 'max:100'
             ],
-            'list_price' =>[
+            'price' =>[
                 'required',
                 'numeric',
                 'between:1000,999999',
@@ -53,7 +53,6 @@ class ProductRequest extends FormRequest
 
         ];
         if(!$this->id){
-            $validate['expiry_date'] = 'required|date|after:'.Carbon::now()->subDay()->format('Y-m-d');
             $validate['image'] = 'required|file|mimes:jpeg,png';
         }
         return $validate;
@@ -66,9 +65,9 @@ class ProductRequest extends FormRequest
             'name.unique' => 'Tên sản phẩm đã tồn tại, vui lòng chọn tên sản phẩm khác',
             'image.required' => 'Bạn không được để trống ảnh sản phẩm',
             'image.mimes' => 'Bạn chỉ có thể lựa chọn định dạng ảnh jpeg hoặc png',
-            'list_price.required' => 'Bạn phải nhập giá sản phẩm',
-            'list_price.numeric' => 'Giá sản phẩm phải là số',
-            'list_price.between' => 'Giá sản phẩm phải nằm trong khoảng 1000 đến 999999 ',
+            'price.required' => 'Bạn phải nhập giá sản phẩm',
+            'price.numeric' => 'Giá sản phẩm phải là số',
+            'price.between' => 'Giá sản phẩm phải nằm trong khoảng 1000 đến 999999 ',
             'sell_price.required' => 'Bạn phải nhập giá sản phẩm',
             'sell_price.numeric' => 'Giá sản phẩm phải là số',
             'sell_price.between' => 'Giá sản phẩm phải nằm trong khoảng 1000 đến 999999 ',
@@ -78,7 +77,6 @@ class ProductRequest extends FormRequest
             'description.required' => 'Bạn phải nhập nội dung sản phẩm',
             'description.min' => 'Nội dung sản phẩm phải lớn hơn 20 ký tự',
             'description.max' => 'Nội dung sản phẩm phải nhỏ hơn 10000 ký tự',
-            'expiry_date.required' => 'Bạn phải nhập hạn sử dụng',
         ];
 
     }

@@ -49,10 +49,10 @@
 						</div>
 						<div class="details">
 							<div class="number">
-								 1349
+								 {{$countpro}}
 							</div>
 							<div class="desc">
-								 New Feedbacks
+								 Số lượng sản phẩm trong cửa hàng
 							</div>
 						</div>
 						<a class="more" href="javascript:;">
@@ -67,10 +67,10 @@
 						</div>
 						<div class="details">
 							<div class="number">
-								 12,5M$
+								 {{$countview}}
 							</div>
 							<div class="desc">
-								 Total Profit
+								 Tổng số lượt xem bài viết
 							</div>
 						</div>
 						<a class="more" href="javascript:;">
@@ -85,10 +85,10 @@
 						</div>
 						<div class="details">
 							<div class="number">
-								 549
+								 {{$countuser}}
 							</div>
 							<div class="desc">
-								 New Orders
+								Tổng số thành viên
 							</div>
 						</div>
 						<a class="more" href="javascript:;">
@@ -103,10 +103,10 @@
 						</div>
 						<div class="details">
 							<div class="number">
-								 +89%
+								 {{$countorder}}
 							</div>
 							<div class="desc">
-								 Brand Popularity
+								 Tổng số đơn hàng
 							</div>
 						</div>
 						<a class="more" href="javascript:;">

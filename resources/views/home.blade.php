@@ -241,7 +241,7 @@
                 @foreach($model as $spkm)
                 <div class="col-md-4">
                     <div class="media">
-                        <div class="wiggle">
+                        <div class="">
                             <a href="{{route('chitietsp', ['id' => $spkm->id])}}">
                                 <img src="{{$spkm->image}}" class="mr-3" alt="" width="100" class="responsive">
                             </a>
@@ -284,7 +284,7 @@
                         </div>
                         <div class="blog-content">
                             <a href="{{route('chitietbv', ['id' => $bv->id])}}"> {{$bv->title}} </a>
-                            <p> {{$bv->short_desc}}</p>
+                            <p> {!!Str::limit($bv->short_desc, $limit = 100, $end = '...')!!}</p>
                             <div class="day-blog" style="margin: 5px 0;">
                                 <span class="post-time">
                                     <i class="fa fa-user" aria-hidden="true"></i> Bởi {{$bv->author}}

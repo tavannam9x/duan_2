@@ -1,4 +1,3 @@
-
 @extends('admin_material_design.admin')
 @section('content')
 <div class="page-content-wrapper">

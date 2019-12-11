@@ -72,13 +72,14 @@
                                             </a>
                                         </div>
                                         <div class="category-products-price">
-                                            <span> {{$pr->price}} </span>
+                                            <span> {{$pr->sell_price}} </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             @endforeach
                         </div>
+                        <p style="margin: auto;">{{$model->links()}}</p>
                         
                     </div>
                 </div>
