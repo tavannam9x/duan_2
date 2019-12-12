@@ -30,14 +30,8 @@ class ContactRequest extends FormRequest
             'phone_number' =>[
                 'required',
                 'numeric',
-                'between:1000,999999',
             ],
             'content' =>[
-                'required',
-                'min:20',
-                'max:1000'
-            ],
-            'comment' =>[
                 'required',
                 'min:20',
                 'max:1000'
@@ -65,10 +59,6 @@ class ContactRequest extends FormRequest
             'content.required' => 'Bạn phải nhập nội liên hệ',
             'content.min' => 'Nội dung liên hệ phải lớn hơn 20 ký tự',
             'content.max' => 'Nội dung liên hệ phải nhỏ hơn 1000 ký tự',
-
-            'comment.required' => 'Bạn phải nhập nội bình luận',
-            'comment.min' => 'Nội dung bình luận phải lớn hơn 20 ký tự',
-            'comment.max' => 'Nội dung bình luận phải nhỏ hơn 1000 ký tự',
         ];
 
     }

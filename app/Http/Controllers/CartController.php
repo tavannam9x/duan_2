@@ -41,7 +41,7 @@ class CartController extends Controller
                     "idpro" => $product->id,
                     "name" => $product->name,
                     "quantity" => 1,
-                    "price" => $product->price,
+                    "price" => $product->sell_price,
                     "photo" => $product->image
                 ]
             ];
@@ -67,7 +67,7 @@ class CartController extends Controller
             "idpro" => $product->id,
             "name" => $product->name,
             "quantity" => 1,
-            "price" => $product->price,
+            "price" => $product->sell_price,
             "photo" => $product->image
         ];
 
@@ -83,6 +83,8 @@ class CartController extends Controller
             $cart = session()->get('cart');
 
             $cart[$request->id]["quantity"] = $request->quantity;
+
+            session()->forget('coupon');
 
             session()->put('cart', $cart);
 
@@ -112,9 +114,9 @@ class CartController extends Controller
     {
       if(!$request->has('keyword') || empty($request->keyword) ){
             $orders = Order::paginate(5);
-            $order0 = Order::where('status',0)->paginate(5);
-            $order1 = Order::where('status',1)->paginate(5);
-            $order2 = Order::where('status',2)->paginate(5);
+            $order0 = Order::where('status','=',0)->paginate(5);
+            $order1 = Order::where('status','=',1)->paginate(5);
+            $order2 = Order::where('status','=',2)->paginate(5);
         }else{
             $order0=null;
             $order1=null;
@@ -178,7 +180,7 @@ class CartController extends Controller
           $bill->price=$value['price'];
           $bill->quantity=$value['quantity'];
           $bill->product_id=$value['idpro'];
-          $bill->image='../'.$value['photo'];
+          $bill->image='../../'.$value['photo'];
           $bill->save();
       }
 

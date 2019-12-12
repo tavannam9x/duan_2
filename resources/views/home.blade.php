@@ -188,7 +188,7 @@
                                 </a>
                             </div>
                             <div class="category-products-price">
-                                <span> {{$spnb->price}} </span>
+                                <span> {{$spnb->sell_price}} </span>
                             </div>
                         </div>
                     </div>
@@ -251,11 +251,12 @@
                                 <p class="mt-2" style="font-weight: bold;"> {{$spkm->name}} </p>
                             </a>
                             <span style="color: #3b9048; font-size: 16px;">
-                               {{$spkm->sell_price}} VNĐ
+                                <strike style="padding: 0 10px; color: #acacac;">
+                                   {{$spkm->price}} VNĐ
+                                </strike>
                             </span>
-                            <strike style="padding: 0 10px; color: #acacac;">
-                                {{$spkm->price}} VNĐ
-                            </strike> 
+                            
+                                {{$spkm->sell_price}} VNĐ
                         </div>
                     </div>
                 </div>

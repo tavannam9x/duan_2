@@ -5,7 +5,14 @@ Route::post('/dangki', 'DangkiController@saveAddnew');
 Route::get('/dangnhap', 'DangkiController@Login')->name('dangnhap.add');
 Route::post('/dangnhap', 'DangkiController@postLogin');
 Route::get('/dangxuat', 'DangkiController@logoutus')->name('logoutUser');
-
+Route::get('cp-login', 'Auth\LoginController@loginForm')->name('login');
+Route::post('cp-login', 'Auth\LoginController@postLogin');
+Route::group(['middleware' => 'auth'], function(){
+Route::any('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('403', function(){
+	return view('auth403');
+})->name('auth.403');
+});
 
 
 Route::get('/doithongtin/{id}', 'TrangchuController@editinfo')->name('info.edit');
@@ -37,5 +44,5 @@ Route::post('chitietbaiviet/{id}', 'TrangchuController@saveAddpost');
 
 Route::post('coupon','CouponController@store')->name('coupon.store');
 Route::post('delete-coupon','CouponController@destroy')->name('coupon.destroy');
-Route::get('/admin2','AdminChartController@mostViewProduct')->name('homeadmin');
+
 ?>

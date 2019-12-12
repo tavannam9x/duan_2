@@ -100,8 +100,7 @@
                     </th>
                   </tr>
                 </thead>
-                @foreach($model as $lc)
-                 @if($lc->status == 0)
+                @foreach($order0 as $lc)
                 <tbody>
                 <tr>
                     <td>
@@ -146,7 +145,6 @@
                     </td>
                   </tr>
                 </tbody>
-                @endif
                 @endforeach
                 @if($order0 != null)
                 <tr>
@@ -195,8 +193,7 @@
                     </th>
                   </tr>
                 </thead>
-                @foreach($model as $lc)
-                 @if($lc->status == 1)
+                @foreach($order1 as $lc)
                 <tbody>
                 <tr>
                     <td>
@@ -231,7 +228,6 @@
                     <td>
                       @if($lc->status == 1)
                        <p class="btn btn-info">Đang giao hàng</p>
-                      
                       @endif
                     </td>
                     <td>
@@ -242,7 +238,6 @@
                     </td>
                   </tr>
                 </tbody>
-                @endif
                 @endforeach
                 @if($order1 != null)
                 <tr>
@@ -291,8 +286,7 @@
                     </th>
                   </tr>
                 </thead>
-                @foreach($model as $lc)
-                @if($lc->status == 2)
+                @foreach($order2 as $lc)
                 <tbody>
                 <tr>
                     <td>
@@ -337,7 +331,6 @@
                     </td>
                   </tr>
                 </tbody>
-                @endif
                 @endforeach
                @if($order2 != null)
                 <tr>

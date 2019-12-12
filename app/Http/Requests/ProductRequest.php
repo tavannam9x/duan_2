@@ -49,8 +49,6 @@ class ProductRequest extends FormRequest
                 'max:10000'
             ]
 
-
-
         ];
         if(!$this->id){
             $validate['image'] = 'required|file|mimes:jpeg,png';

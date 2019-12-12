@@ -96,9 +96,9 @@
                             <td class="hidden-xs text-center" style="font-size: 15px;"><strong>Tổng tiền: 
                                 @if (session()->has('coupon'))
                                         {{$total = $total-(session()->get('coupon')['totalM']*session()->get('coupon')['discount'])/100 }}
-                                    @else
-                                        {{$total}}
-                                    @endif VNĐ</strong></td>
+                                @else
+                                    {{$total}}
+                                @endif VNĐ</strong></td>
                         </tr>
                         </tfoot>
                     </table>
@@ -113,31 +113,31 @@
                                         @if(session('cart'))
                                             @foreach(session('cart') as $id => $details)
                                                 @if (session()->has('coupon'))
-                                                    {{$total = $total-(session()->get('coupon')['totalM']*session()->get('coupon')['discount'])/100 }}
+                                                    <?php $total = session()->get('coupon')['totalM']-(session()->get('coupon')['totalM']*session()->get('coupon')['discount'])/100 ?>
                                                 @else
-                                                    {{$total}}
+                                                    <?php $total ?>
                                                 @endif
-                                                <?php $total += $details['price'] * $details['quantity'] ?>
+                                                
 
                                                 <input type="hidden" name="price" value="{{ $details['price'] }}">
                                                 <input type="hidden" name="image" value="{{ $details['photo'] }}">
                                                 <input type="hidden" name="product_id" value="{{ $details['idpro'] }}">
                                                 <input type="hidden" name="quantity" value="{{ $details['quantity'] }}">
+
                                                 <input type="hidden" name="total_price" value="{{ $total }}">
                                                     
                                             @endforeach
                                         @endif
 
                                         @if(Illuminate\Support\Facades\Auth::check())
-
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"> Họ tên
                                                     <span style="color: red">*</span>
                                                 </label>
-                                                <input type="text" class="form-control" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="" readonly="true">
+                                            <input type="text" class="form-control" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="">
                                             </div>
                                             <div class="form-group">
-                                            <input type="number" name="phone_number" value="{{ Illuminate\Support\Facades\Auth::user()->phone_number }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" Số điện thoại ">
+                                            <input type="text" name="phone_number" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" Số điện thoại ">
                                             </div>
 
                                             <input type="hidden" name="user_id" value="{{ Illuminate\Support\Facades\Auth::user()->id }}">
@@ -147,9 +147,6 @@
                                                     <span style="color: red">*</span>
                                                 </label>
                                                 <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="">
-                                                @if($errors->first('name'))
-                                                <span class="text-danger">{{$errors->first('name')}}</span>
-                                                @endif
                                             </div>
                                             
                                         @endif
@@ -245,7 +242,7 @@
                         
                         <input type="hidden" name="current_date" value="{{\Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateTimeLocalString()}}"/>
                         <div class="thanhtoan" style="margin-bottom: 10px; max-width: 100%; font-family: 'Times New Roman', Times, serif; background: #80B435; text-align: center;padding: 10px; text-transform: uppercase; color: #fff;">
-                            <button style="border:none; background: #80B435; color: #fff; font-family: 'Times New Roman', Times, serif; ">Mua hàng</button>
+                            <button style="border:none; background: #80B435; color: #fff; font-family: 'Times New Roman', Times, serif; ">Áp dụng mã giảm giá</button>
                     </form>
                     </div>
                     <div class="container">

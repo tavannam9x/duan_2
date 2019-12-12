@@ -42,7 +42,7 @@
     <div class="main-article-detail">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <h2> {{$cate->title}} </h2>
                     <div class="detail-content">
                         <div class="postby">
@@ -86,7 +86,7 @@
                     <div class="related-post">
                         <div class="row">
                             @foreach($model as $bv)
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="related-post-img">
                                     <a href="chitietbaiviet.html">
                                         <img src="{{$bv->image}}" width="100%">
@@ -99,28 +99,6 @@
                             </div>
                             @endforeach
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="menu-right">
-                        <h4> Danh mục tin </h4>
-                        <div class="menu">
-                            <ul>
-                                <li>
-                                    <a href="chitietbaiviet.html">
-                                        <i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;&nbsp; Tin mới hằng ngày </a>
-                                </li>
-                                <li>
-                                    <a href="chitietbaiviet.html">
-                                        <i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;&nbsp; Tin giá cả </a>
-                                </li>
-                                <li>
-                                    <a href="chitietbaiviet.html">
-                                        <i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;&nbsp; Mẹo vặt </a>
-                                </li>
-                            </ul>
-                        </div>
-                       
                     </div>
                 </div>
             </div>

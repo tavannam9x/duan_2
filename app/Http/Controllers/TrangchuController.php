@@ -55,6 +55,7 @@ class TrangchuController extends Controller
     }
     public function saveAddnew(ContactRequest $request){
         $model = new Contact();
+
         $dt = Carbon::now();
         if($request->date == null){
             $model->date = $dt->toDateString();
@@ -110,7 +111,7 @@ class TrangchuController extends Controller
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
         $cate=Post::find($id);
-        $model = Post::all()->where('id','!=',$id);
+        $model = Post::all()->where('id','!=',$id)->take(4);
         return view('chitietbaiviet', compact('category_product','category_post','cate','model'));
     }
 

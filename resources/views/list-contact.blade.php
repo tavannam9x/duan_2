@@ -112,9 +112,9 @@
                     </td>
                     <td>
                        @if($lh->status == 0)
-                       <p class="label label-sm label-warning">Ẩn bình luận</p>
+                       <p class="label label-sm label-warning">Chưa xử lý</p>
                       @elseif($lh->status == 1)
-                       <p class="label label-sm label-success">Hiển thị bình luận</p>
+                       <p class="label label-sm label-success">Đã xử lý</p>
                       @endif
                     </td>
                     <td>

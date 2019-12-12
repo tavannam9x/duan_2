@@ -56,7 +56,7 @@
                                 <label for="exampleInputEmail1"> Họ tên
                                     <span style="color: red">*</span>
                                 </label>
-                                <input type="text" class="form-control" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="" readonly="true">
+                                <input type="text" class="form-control" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="">
                             </div>
 
                             @else
@@ -85,7 +85,7 @@
                                 <label for="exampleInputPassword1">Điện thoại
                                     <span style="color: red">*</span>
                                 </label>
-                                <input type="number" name="phone_number" class="form-control" id="exampleInputPassword1" placeholder="">
+                                <input type="text" name="phone_number" class="form-control" id="exampleInputPassword1" placeholder="">
                                 @if($errors->first('phone_number'))
                                 <span class="text-danger">{{$errors->first('phone_number')}}</span>
                                 @endif

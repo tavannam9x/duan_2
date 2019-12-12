@@ -67,12 +67,15 @@
                                     </div>
                                     <div class="category-products-information">
                                         <div class="category-products-name">
-                                            <a href="chitietsanpham.html">
+                                            <a href="{{route('chitietsp', ['id' => $pr->id])}}">
                                                 <span style="display: inline-block; font-weight: bold;"> {{$pr->name}} </span>
                                             </a>
                                         </div>
                                         <div class="category-products-price">
-                                            <span> {{$pr->sell_price}} </span>
+                                            <strike style="padding: 0 10px; color: #acacac;">
+                                                <p> {{$pr->price}} VNĐ</p>
+                                            </strike>
+                                            <p> {{$pr->sell_price}} VNĐ </p>
                                         </div>
                                     </div>
                                 </div>
