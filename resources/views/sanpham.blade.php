@@ -73,9 +73,9 @@
                                         </div>
                                         <div class="category-products-price">
                                             <strike style="padding: 0 10px; color: #acacac;">
-                                                <p> {{$pr->price}} VNĐ</p>
+                                                {{$pr->price}} VNĐ
                                             </strike>
-                                            <p> {{$pr->sell_price}} VNĐ </p>
+                                            {{$pr->sell_price}} VNĐ
                                         </div>
                                     </div>
                                 </div>
@@ -91,9 +91,9 @@
                         <h2> Tìm kiếm sản phẩm </h2>
                         <div class="menu" style="border: 1px solid #ddd; margin: 0px; margin-bottom: 20px; height: 60px; padding: 10px 0px 20px 0px;">
                             <div class="col-md-12">
-                            <form class="form-inline my-3 my-lg-0" style="padding-bottom: 20px;margin: auto; padding-left: 20px;">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <form class="form-inline my-3 my-lg-0" style="padding-bottom: 20px;margin: auto; padding-left: 20px;" action="" method="get">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
                             </form>
                             </div>
                         </div>
@@ -149,27 +149,6 @@
                             </ul>
                         </div>
                     </div>
-
-                    <div class="category-products-filter">
-                        <h2> Tìm theo mức giá </h2>
-                        <div class="filter-price" style="border: 1px solid #ddd; margin-bottom: 20px;">
-                            <ul>
-                                <li>
-                                    <a href="#"> Giá dưới 30.000đ </a>
-                                </li>
-                                <li>
-                                    <a href="#"> 30.000đ - 70.000đ </a>
-                                </li>
-                                <li>
-                                    <a href="#"> 70.000đ - 100.000đ </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Giá trên 100.000đ </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>

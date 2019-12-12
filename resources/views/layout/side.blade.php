@@ -143,12 +143,12 @@
 					<ul class="sub-menu">
 						<li>
 							<a href="{{route('homecommentbv')}}">
-							<i class="fa fa-plus-square"></i>
+							<i class="fa fa-list"></i>
 							Bình luận bài viết</a>
 						</li>
 						<li>
 							<a href="{{route('homecommentpro')}}">
-							<i class="fa fa-plus-square"></i>
+							<i class="fa fa-list"></i>
 							Đánh giá sản phẩm</a>
 						</li>
 					</ul>

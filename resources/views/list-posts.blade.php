@@ -96,22 +96,6 @@
                     <td>
                        <img src="{{$bv->image}}" style="width: 250px;">
                     </td>
-
-                   <!--  <td style="width: 200px;">
->>>>>>> newest
-                       {{Str::limit($bv->short_desc, $limit = 50, $end = '...')}}
-                    </td>
-
-                    <td style="width: 250px;">
-                        <div class="portlet-body" style="width: 250px;">
-                          <div class="scroller" style="height:250px;" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
-                            {!!Str::limit($bv->description, $limit = 300, $end = '...')!!}
-                          </div>
-                        </div>
-<<<<<<< HEAD
-                    </td>
-=======
-                    </td> -->
                     <td>
                        @isset($bv->post->name)
                         {{$bv->post->name}}
@@ -120,13 +104,6 @@
                     <td>
                        {{$bv->views}}
                     </td>
-                    <!-- <td style="width: 300px;">
-                        {!!$bv->description!!}
-                      
-                    </td> -->
-                    <!-- <td style="overflow: scroll; height: 100px;">
-                    {!!$bv->description!!}
-                    </td> -->
                     <td>
                        {{$bv->date}}
                     </td>

@@ -60,12 +60,13 @@
 
                     @if(Illuminate\Support\Facades\Auth::check())
                     <div class="detail-form">
-                        <form action="{{route('chitietbv', ['id' => $cate->id])}}" method="post">
+                        <form action="{{route('savebv', ['id' => $cate->id])}}" method="post">
                             @csrf
                             <div class="form-group">
                                 <input type="text" class="form-control" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" readonly="true">
                             </div>
                             <input type="hidden" name="status" value="1">
+                            <input type="hidden" name="user_id" value="{{ Illuminate\Support\Facades\Auth::user()->id }}">
                             <input type="hidden" name="post_id" value="{{$cate->id}}">
                             <div class="form-group">
                                 <textarea class="form-control" id="exampleFormControlTextarea1" name="comment" rows="3" placeholder="Nội dung"></textarea>
@@ -80,7 +81,27 @@
                     </div>
                     @endif
 
-
+                    <div class="comment-pr" style="max-width: 100%; height: auto; padding: 20px 0;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @foreach($comments as $cm)
+                                        <div class="row">
+                                            @isset($cm->commentimg->image)
+                                                <div class="col-lg-1">
+                                                    <img src="{{$cm->commentimg->image}}" width="" style="width: 100%; height: auto; position: relative;">
+                                                </div>
+                                            @endisset
+                                            <div class="col-lg-11">
+                                                <h4> {{$cm->name}} </h4>
+                                                <p> {{$cm->comment}}</p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <h2> Bài viết liên quan </h2>
                     <div class="related-post">
@@ -88,12 +109,12 @@
                             @foreach($model as $bv)
                             <div class="col-md-3">
                                 <div class="related-post-img">
-                                    <a href="chitietbaiviet.html">
+                                    <a href="{{route('chitietbv', ['id' => $bv->id])}}">
                                         <img src="{{$bv->image}}" width="100%">
                                     </a>
                                 </div>
                                 <div class="related-post-title" style="font-size: 20px;">
-                                    <a href="#"> {{$bv->title}}
+                                    <a href="{{route('chitietbv', ['id' => $bv->id])}}"> {{$bv->title}}
                                     </a>
                                 </div>
                             </div>

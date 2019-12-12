@@ -34,7 +34,7 @@
     <!-- Main blog -->
     <div class="main-content-blog">
         <div class="container">
-            <div class="container">
+                @if(session('cart'))
                 <h2 title="Tin tức"> Giỏ Hàng </h2>
                 <div class="row">
                 <div class="col-9">
@@ -258,8 +258,28 @@
                         </div>
                     </div>
                 </div>
+                @else
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <img style="padding-left: 67px;" src="{{ asset('admin/assets/admin/layout/img/mascot.png')}}">
+                            <span style="padding: 10px; display: block; margin-block-start: 1em;margin-block-end: 1em;">
+                                Không có sản phẩm nào trong giỏ hàng của bạn.
+                            </span>
+
+                            <a href="{{route('trangchu')}}" class="btn btn-yellow" style="background-color: #fdd835;
+                                color: #4a4a4a;
+                                font-size: 14px;
+                                font-weight: 500;
+                                padding: 9.5px 55.5px;
+                                margin-left: 60px;">
+                                <b>Tiếp tục mua sắm</b>
+                            </a>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                @endif
             </div>
-        </div>
         </div>
     </div>
 

@@ -56,7 +56,7 @@ class ContactRequest extends FormRequest
             'phone_number.required' => 'Bạn không được để trống số điện thoại',
             'phone_number.numeric' => 'Số điện thoại phải là dạng số',
             
-            'content.required' => 'Bạn phải nhập nội liên hệ',
+            'content.required' => 'Bạn phải nhập nội dung liên hệ liên hệ',
             'content.min' => 'Nội dung liên hệ phải lớn hơn 20 ký tự',
             'content.max' => 'Nội dung liên hệ phải nhỏ hơn 1000 ký tự',
         ];

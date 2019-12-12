@@ -36,11 +36,19 @@ class TrangchuController extends Controller
         return view('home', compact('category_product','category_post','model','post','slideshow','slide'));
     }
 
-    public function sanpham($id){
+    public function sanpham(Request $request, $id){
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
+
         $cate=Category::find($id);
-        $model = Product::where('category_id','=',$id)->where('status','=',1)->paginate(9);
+
+        if(!$request->has('keyword') || empty($request->keyword) ){
+            $model = Product::where('category_id','=',$id)->where('status','=',1)->paginate(9);
+        }else{
+            $kw = $request->keyword;
+            $model = Product::where('name', 'like', "%$kw%")->where('status','=',1)->paginate(9);
+            $model->withPath("?keyword=$kw");
+        }
         return view('sanpham', compact('category_product','category_post','model','cate'));
     }
 
@@ -75,27 +83,14 @@ class TrangchuController extends Controller
         $model = Product::all()->where('id','!=',$id);
         $cm->fill($request->all());
         $cm->save();
-        return view('chitietsanpham', compact('category_product','category_post','cate','model'));
+        return back();
     }
 
-
-    public function saveAddpost(ContactRequest $request, $id){
-        $category_product= Category::where('category_type','=','0')->get();
-        $category_post= Category::where('category_type','=','1')->get();
-        $cate=Post::find($id);
-        $cm= new Comment();
-        $model = Post::all()->where('id','!=',$id);
-        $cm->fill($request->all());
-        $cm->save();
-        return view('chitietbaiviet', compact('category_product','category_post','cate','model'));
-    }
-
-
-    public function tintuc($id){
+    public function tintuc(Request $request, $id){
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
         $cate=Category::find($id);
-        $model = Post::all()->where('category_post_id','=',$id);
+        $model = Post::where('category_post_id','=',$id)->where('status','=',2)->paginate(6);
         return view('tintuc', compact('category_product','category_post','model','cate'));
     }
 
@@ -112,7 +107,16 @@ class TrangchuController extends Controller
         $category_post= Category::where('category_type','=','1')->get();
         $cate=Post::find($id);
         $model = Post::all()->where('id','!=',$id)->take(4);
-        return view('chitietbaiviet', compact('category_product','category_post','cate','model'));
+        $comments=Comment::all()->where('post_id','=',$id);
+        return view('chitietbaiviet', compact('category_product','category_post','cate','model','comments'));
+    }
+
+    public function saveAddpost(Request $request, $id){
+        $cate=Post::find($id);
+        $cm= new Comment();
+        $cm->fill($request->all());
+        $cm->save();
+        return back();
     }
 
     public function gioithieu(Request $request){

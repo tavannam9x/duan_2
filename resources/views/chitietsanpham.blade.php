@@ -135,8 +135,8 @@
                                 </a>
                             </div>
                             <div class="category-products-price">
-                                <span> <p style="text-decoration:line-through;"> {{$cate->price}} VNĐ</p>
-                        <p> {{$cate->sell_price}} VNĐ</p> </span>
+                                <span> <strike style="padding: 0 10px; color: #acacac;"> {{$cate->price}} VNĐ</strike></span>
+                        {{$cate->sell_price}} VNĐ
                             </div>
                         </div>
                     </div>

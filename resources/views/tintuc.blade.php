@@ -71,6 +71,7 @@
                     @endif
                     @endforeach
                 </div>
+                <p style="margin: auto;">{{$model->links()}}</p>
             </div>
         </div>
     </div>

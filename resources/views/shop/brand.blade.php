@@ -1,49 +1,5 @@
  <!-- Main Brands -->
-    <div class="main-brands">
-        <div class="container">
-            <div class="title-brands">
-                <h2 title="top thương hiệu"> Top thương hiệu </h2>
-            </div>
-            <div class="row task-brands">
-                <div class="col-md-2 col-xs-12 col-md-6">
-                    <div class="box-brands">
-                        <img src="../../../shop/image/brand_1.png" class="img-thumbnail">
-                    </div>
-                </div>
-                <div class="col-md-2 col-xs-12 col-md-6">
-                    <div class="box-brands">
-                        <img src="../../../shop/image/brand_2.png" class="img-thumbnail">
-                    </div>
-                </div>
-                <div class="col-md-2 col-xs-12 col-md-6">
-                    <div class="box-brands">
-                        <img src="../../../shop/image/brand_3.png" class="img-thumbnail">
-                    </div>
-                </div>
-                <div class="col-md-2 col-xs-12 col-md-6">
-                    <div class="box-brands">
-                        <img src="../../../shop/image/brand_4.png" class="img-thumbnail">
-                    </div>
-                </div>
-                <div class="col-md-2 col-xs-12 col-md-6">
-                    <div class="box-brands">
-                        <img src="../../../shop/image/brand_5.png" class="img-thumbnail">
-                    </div>
-                </div>
-                <div class="col-md-2 col-xs-12 col-md-6">
-                    <div class="box-brands">
-                        <img src="../../../shop/image/brand_5.png" class="img-thumbnail">
-                    </div>
-                </div>
-                <div class="col-md-2 col-xs-12 col-md-6">
-                    <div class="box-brands">
-                        <img src="../../../shop/image/brand_5.png" class="img-thumbnail">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <p></p>
     <!-- Main footer -->
     <div class="main-footer">
         <div class="container">
@@ -174,7 +130,7 @@
         <div class="end-bottom">
             <div class="container">
                 © Bản quyền thuộc về
-                <p> NST Fruits</p> | Cung cấp bởi NST Fruits
+                <p> Coolorganic</p> | Cung cấp bởi Coolorganic
             </div>
         </div>
     </div>

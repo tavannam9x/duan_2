@@ -43,13 +43,21 @@
 					</div>
 				</div>
 				<div class="form-group form-md-line-input ">
-					<div class="input-icon right">
-						<input type="file" name="image" value="" class="form-control">
-						<label for="form_control">Ảnh sản phẩm</label>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="input-icon right">
+								<input type="file" id="product_image" name="image" value="" class="form-control">
+							</div>
+							@if($errors->first('image'))
+								<span class="text-danger">{{$errors->first('image')}}</span>
+							@endif
+						</div>
+						<div class="col-md-6">
+							<div class="input-icon right">
+								<img id="imageTarget" class="img-responsive" src="{{ asset('admin/assets/admin/layout/img/default.png')}}" style="height: 200px;">
+							</div>
+						</div>
 					</div>
-					@if($errors->first('image'))
-					<span class="text-danger">{{$errors->first('image')}}</span>
-					@endif
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
@@ -71,7 +79,7 @@
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
-						<input type="text" name="short_desc" value="" class="form-control">
+						<textarea class="form-control" name="short_desc" value="" class="form-control"></textarea>
 						<label for="form_control_1">Mô tả sản phẩm</label>
 						@if($errors->first('short_desc'))
 						<span class="text-danger">{{$errors->first('short_desc')}}</span>
@@ -121,5 +129,28 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+ 
+  function getBase64(file, selector) {
+     var reader = new FileReader();
+     reader.readAsDataURL(file);
+     reader.onload = function () {
+      $(selector).attr('src', reader.result);
+     };
+     reader.onerror = function (error) {
+       console.log('Error: ', error);
+     };
+  }
+  var img = document.querySelector('#product_image');
+  img.onchange = function(){
+    var file = this.files[0];
+    if(file == undefined){
+      $('#imageTarget').attr('src', "{{ asset('admin/assets/admin/layout/img/default.png')}}");
+    }else{
+      getBase64(file, '#imageTarget');
+    }
+  }
+</script>
 @endsection();
 
