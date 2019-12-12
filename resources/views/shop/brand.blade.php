@@ -178,6 +178,7 @@
             </div>
         </div>
     </div>
+ @include('sweetalert::alert')
 </body>
 
 <!-- Script Slick -->

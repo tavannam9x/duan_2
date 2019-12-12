@@ -1,6 +1,7 @@
 <?php
 
-Route::get('/', 'PostController@index')->name('homepost');
+Route::get('/', 'PostController@listPost')->name('homepost');
+Route::get('/getData','PostController@getData')->name('posts.getData');
 Route::get('add-new', 'PostController@addNew')->name('post.add');
 Route::post('add-new', 'PostController@saveAddNew');
 Route::get('edit/{id}', 'PostController@editForm')->name('post.edit');

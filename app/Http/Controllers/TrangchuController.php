@@ -10,7 +10,7 @@ use App\Models\Comment;
 use App\Models\User;
 use App\Models\Slideshow;
 use App\Models\Order;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Slideshowchildren;
 use DB;
 use App\Http\Requests\ContactRequest;
@@ -22,14 +22,14 @@ class TrangchuController extends Controller
         $slide = Slideshow::all()->where('status','=','1');
         $slideshow= Slideshowchildren::all()->take(1);
         foreach ($slide as $key => $sli) {
-        
+
             $parent= $sli->id;
-            $st= $sli->status;  
+            $st= $sli->status;
             if($st == 1){
             $slideshow = Slideshowchildren::all()->where('parent_id','==',$parent);
             }else{
                 $slideshow= Slideshowchildren::all()->rand(1);
-            }      
+            }
         }
         $model = DB::table('product')->orderBy('views', 'desc')->take(9)->get();
         $post = DB::table('post')->where('status',2)->orderBy('views', 'desc')->take(3)->get();
@@ -70,7 +70,7 @@ class TrangchuController extends Controller
     public function saveAdd(Request $request, $id){
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
-        $cate=Product::find($id);    
+        $cate=Product::find($id);
         $cm= new Comment();
         $model = Product::all()->where('id','!=',$id);
         $cm->fill($request->all());
@@ -129,7 +129,7 @@ class TrangchuController extends Controller
         $orders = User::find($request->id)->orders;
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
-    
+
         return view('lichsumuahang', compact('category_product','category_post','orders'));
 
     // public function history($id){
@@ -163,7 +163,7 @@ class TrangchuController extends Controller
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
         if($request->hasFile('image')){
-           
+
             $oriFileName = $request->image->getClientOriginalName();
             $filename = str_replace(' ', '-', $oriFileName);
             $filename = uniqid() . '-' . $filename;

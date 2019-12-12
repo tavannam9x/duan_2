@@ -1,6 +1,12 @@
 <?php
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 Route::get('/dangki', 'DangkiController@addNew')->name('dangki.add');
+Route::get('/test', function (){
+    Alert::success('Success Titel', 'Sasca');
+    return view('test_alert');
+});
 Route::post('/dangki', 'DangkiController@saveAddnew');
 Route::get('/dangnhap', 'DangkiController@Login')->name('dangnhap.add');
 Route::post('/dangnhap', 'DangkiController@postLogin');

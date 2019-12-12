@@ -114,18 +114,18 @@
 						</a>
 					</div>
 				</div>
-				<div class="row">
-			        <div class="col-md-6">
-			            {!! $adminChart->container() !!}
-			        </div>
-			        {!! $adminChart->script() !!}
-			    </div>
-			    <div class="row">
-			        <div class="col-12">
-			            {!! $adminChart2->container() !!}
-			        </div>
-			        {!! $adminChart2->script() !!}
-			    </div>
+{{--				<div class="row">--}}
+{{--			        <div class="col-md-6">--}}
+{{--			            {!! $adminChart->container() !!}--}}
+{{--			        </div>--}}
+{{--			        {!! $adminChart->script() !!}--}}
+{{--			    </div>--}}
+{{--			    <div class="row">--}}
+{{--			        <div class="col-12">--}}
+{{--			            {!! $adminChart2->container() !!}--}}
+{{--			        </div>--}}
+{{--			        {!! $adminChart2->script() !!}--}}
+{{--			    </div>--}}
 			</div>
 		</div>
 	</div>

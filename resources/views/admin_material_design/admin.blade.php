@@ -134,6 +134,10 @@ License: You must have a valid license purchased only from themeforest(the above
 </div>
 <!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.js'></script>
+<script type='text/javascript' src='https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+@routes
+@yield('scripts')
 @include('layout.script')
 </body>
 <!-- END BODY -->

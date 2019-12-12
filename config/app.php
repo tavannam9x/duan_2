@@ -163,6 +163,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
+        Tightenco\Ziggy\ZiggyServiceProvider::class,
+
 
 
         /*
@@ -229,6 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
 
     ],
 

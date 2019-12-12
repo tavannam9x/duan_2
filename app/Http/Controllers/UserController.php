@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Hash;
+use Yajra\DataTables\DataTables;
 class UserController extends Controller
 {
     public function index(Request $request){
@@ -77,5 +78,29 @@ class UserController extends Controller
         else{
         return redirect(route('adminsuper'));
         }
+    }
+    public function getView()
+    {
+        return view('list-user');
+    }
+
+    public function getData()
+    {
+        $user = User::select([
+            'id',
+            'name',
+            'email',
+            'image',
+            'phone_number',
+        ]);
+        return DataTables::of($user)->addColumn('action',function($data){
+            $button = '<button class="btn btn-primary" name="edit" id="'.$data->id.'" >
+                        <a href="/admin2/product/edit/'.$data->id.'">Edit</a>
+                        </button>';
+            $button .= '<button class="btn btn-danger btnDelete" name="delete" id="'.$data->id.'" >
+                            <a href="/admin2/product/deletePost/'.$data->id.'">Delete</a>
+                        </button>';
+            return $button;
+        })->rawColumns(['action'])->make(true);
     }
 }

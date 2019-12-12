@@ -10,6 +10,9 @@ use App\Models\Order;
 use Session;
 use Carbon\Carbon;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\SaveCartRequest;
+use Yajra\DataTables\DataTables;
 
 class CartController extends Controller
 {
@@ -47,7 +50,6 @@ class CartController extends Controller
             ];
 
             session()->put('cart', $cart);
-
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
 
@@ -162,7 +164,7 @@ class CartController extends Controller
 
 
 
-    public function saveCart(Request $request)
+    public function saveCart(SaveCartRequest $request)
     {
       $cart = Session::get('cart');
 
@@ -186,10 +188,31 @@ class CartController extends Controller
 
       Session::forget('cart');
       Session::forget('coupon');
+      Alert::success('Thành công', 'Đơn hàng được đã được gửi');
       return redirect(route('cart.add'));
     }
 
+    public function listOrder()
+    {
+        return view('list-order');
+    }
 
-
-
+    public function getData()
+    {
+        $orders = Order::select([
+            'id',
+            'name',
+            'phone_number',
+            'order_address',
+            'order_date',
+            'updated_at',
+            'total_price',
+            'status',
+        ]);
+        return DataTables::of($orders)->addColumn('action',function($data){
+            $button = '<a href="'. route('cart.edit', $data->id) .'" class="btn btn-primary">Edit</a>';
+            $button .= '<a href="'. route('cart.edit', $data->id) .'" class="btn btn-danger red delete">Chi tiết</a>';
+            return $button;
+        })->rawColumns(['action'])->make(true);
+    }
 }

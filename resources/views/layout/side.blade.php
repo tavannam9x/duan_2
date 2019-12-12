@@ -19,7 +19,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="{{route('home')}}">
+							<a href="{{route('admin.product')}}">
 							<i class="fa fa-list"></i>
 							Danh sách sản phẩm</a>
 						</li>
@@ -40,12 +40,12 @@
 						<li>
 							<a href="{{route('adminsuper')}}">
 							<i class="fa fa-list"></i>
-							Danh sách sản phẩm</a>
+							Danh sách tài khoản</a>
 						</li>
 						<li>
 							<a href="{{route('user.add')}}">
 							<i class="fa fa-plus-square"></i>
-							Thêm sản phẩm</a>
+							Thêm tài khoản</a>
 						</li>
 					</ul>
 				</li>

@@ -21,7 +21,7 @@
             <i class="fa fa-angle-right"></i>
           </li>
           <li>
-            <a href="{{route('adminsuper')}}">Sản phẩm</a>
+            <a href="{{route('admin.product')}}">Sản phẩm</a>
           </li>
         </ul>
       </div>
@@ -38,14 +38,14 @@
                     <div class="portlet-body flip-scroll">
                       <a href="{{route('product.add')}}" class="btn btn-primary">
                               <i class="fa fa-plus "></i> Thêm</a>
-                      <table class="table table-striped " id="listUsers">
+                      <table class="table table-striped " id="listProducts">
                         <thead class="flip-content">
                         <tr>
                             <th>Id</th>
                             <th>Tên</th>
                             <th>Ảnh</th>
-                            <th>Email</th>
-                            <th>Số điện thoại</th>
+                            <th>Lượt xem</th>
+                            <th>Giá</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -63,13 +63,13 @@
 @section('scripts')
     <script>
         $(function () {
-            listUsers = $('#listUsers').DataTable(
+            listProducts = $('#listProducts').DataTable(
                 {
                     dom: 'lifrtBp',
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        url: route('user.Data'),
+                        url: route('product.getData'),
                     },
                     buttons: [
                         'excel',
@@ -88,9 +88,13 @@
                             "title": "Image",
 
                         },
-                        {data: 'email', name: 'email'},
-                        {data: 'phone_number',
-                        name: 'phone_number'},
+                        {data: 'views', name: 'views'},
+                        {data: 'sell_price',
+                        name: 'views',
+                        render: function(data) {
+                          return data+" VNĐ";
+                          }
+                        },
                         { "data": "action",
                           "name": "action",
                           "orderable": false,
@@ -111,8 +115,17 @@
                         'style': 'multi'
                     },
                     order: [1, 'asc'],
+
                 }
             );
+        });
+        $(function() {
+            $.getScript("{{asset('js/bootstrap-confirm-delete.js')}}", function(){
+                $('.delete').bootstrap_confirm_delete({
+                    heading: 'Delete',
+                    message: 'Bạn có chắc chắn muốn xóa không?'
+                });
+            });
         });
     </script>
 @endsection

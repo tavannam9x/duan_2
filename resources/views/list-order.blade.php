@@ -1,354 +1,134 @@
 @extends('admin_material_design.admin')
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <link rel='stylesheet' type='text/css'
+          href='https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css">
+    <link rel='stylesheet' type='text/css'
+          href='https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.10/css/dataTables.checkboxes.css'>
+@endsection
 @section('content')
-<div class="page-content-wrapper">
-    <div class="page-content">
-      <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-      <!-- /.modal -->
-      <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->     <!-- BEGIN PAGE HEADER-->
-      <h3 class="page-title">
-      Coolorganic <small>thực phẩm sạch</small>
-      </h3>
-      <div class="page-bar">
-        <ul class="page-breadcrumb">
-          <li>
-            <i class="fa fa-home"></i>
-            <a href="{{route('homeadmin')}}">Trang chủ</a>
-            <i class="fa fa-angle-right"></i>
-          </li>
-          <li>
-            <a href="{{route('adminsuper')}}">Sản phẩm</a>
-          </li>
-        </ul>
-      </div>
-      <!-- END PAGE HEADER-->
-      <!-- BEGIN DASHBOARD STATS -->
-     <form action="" method="get">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="col-md-3"></div>
-            <div class="col-md-9">
-              <div class="col-md-7">
-                <input style="border: 1px solid" class="nav-item form-control mr-sm-2" type="text" name="keyword" placeholder="Tìm kiếm.....">
-              </div>
-              <div class="col-md-2">
-                <button class="btn btn-sx yellow"><i class="fa fa-search"></i> Search</button>
-              </div>
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <h3 class="page-title">
+                Coolorganic <small>thực phẩm sạch</small>
+            </h3>
+            <div class="page-bar">
+                <ul class="page-breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a href="{{route('homeadmin')}}">Trang chủ</a>
+                        <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.product')}}">Danh sách đơn hàng</a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-3"></div>
-          </div>
-        </div>
-      </form>
-    <div class="row">
-    <div class="col-md-12">
-          <div class="col-md-12">
-            <!-- BEGIN PAGE CONTENT-->
-      <div class="row">
-        <div class="col-md-12">
-          <div class="tabbable-line boxless">
-            <ul class="nav nav-tabs">
-              <li class="active">
-                <a href="#tab_1" data-toggle="tab">
-                Chưa xử lý </a>
-              </li>
-              <li>
-                <a href="#tab_2" data-toggle="tab">
-                Đang giao hàng </a>
-              </li>
-              <li>
-                <a href="#tab_3" data-toggle="tab">
-                Đã xử lý </a>
-              </li>
-              
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane active" id="tab_1">
-                <div class="portlet-body flip-scroll">
-                <table class="table table-striped">
-                <thead class="flip-content">
-                <tr>
-                    <th>
-                       ID
-                    </th>
-                    <th>
-                       Tên khách hàng
-                    </th>
-                    <th>
-                       Số điện thoại
-                    </th>
-                    <th>
-                       Địa chỉ nhận
-                    </th>
-                    <th>
-                       Lời nhắn
-                    </th>
-                    <th>
-                       Ngày nhận
-                    </th>
-                    <th>
-                       Ngày gửi
-                    </th>
-                    <th>
-                       Tổng tiền
-                    </th>
-                    <th>
-                       Người giao hàng
-                    </th>
-                    <th>
-                       Trạng thái
-                    </th>
-                    <th>
-                    </th>
-                  </tr>
-                </thead>
-                @foreach($order0 as $lc)
-                <tbody>
-                <tr>
-                    <td>
-                       {{$lc->id}}
-                    </td>
-                    <td style="width: 150px;">
-                       {{$lc->name}}
-                    </td>
-                    <td>
-                       {{$lc->phone_number}}
-                    </td>
-                    <td style="width: 250px;">
-                       {{$lc->order_address}}
-                    </td>
-                    <td style="width: 200px;">
-                       {{$lc->note}}
-                    </td>
-                    <td>
-                       {{$lc->order_date}}
-                    </td>
-                    <td>
-                       {{$lc->sent_date}}
-                    </td>
-                    <td>
-                       {{$lc->total_price}} VNĐ
-                    </td>
-                    <td>
-                       @isset($lc->shipper->name)
-                        {{$lc->shipper->name}}
-                       @endisset
-                    </td>
-                    <td>
-                      @if($lc->status == 0)
-                       <p class="btn btn-warning">Chưa xử lý</p>
-                      @endif
-                    </td>
-                    <td>
-                      <a href="{{route('cart.edit', ['id' => $lc->id])}}" class="btn btn-primary">
-                      <i class="fa fa-edit"></i> Sửa </a>
-                      <a href="{{route('homecartdetail', ['id' => $lc->id])}}" class="btn btn-success">
-                      <i class="fa fa-edit"></i> Chi tiết </a>
-                    </td>
-                  </tr>
-                </tbody>
-                @endforeach
-                @if($order0 != null)
-                <tr>
-                  <td colspan="13" class="text-center">{{$order0->links()}}</td>
-                </tr>
-                @endif
-                </table>
-              </div>
-              </div>
-              <div class="tab-pane" id="tab_2">
-                <div class="portlet-body flip-scroll">
-                <table class="table table-striped">
-                <thead class="flip-content">
-                <tr>
-                    <th>
-                       ID
-                    </th>
-                    <th>
-                       Tên khách hàng
-                    </th>
-                    <th>
-                       Số điện thoại
-                    </th>
-                    <th>
-                       Địa chỉ nhận
-                    </th>
-                    <th>
-                       Lời nhắn
-                    </th>
-                    <th>
-                       Ngày nhận
-                    </th>
-                    <th>
-                       Ngày gửi
-                    </th>
-                    <th>
-                       Tổng tiền
-                    </th>
-                    <th>
-                       Người giao hàng
-                    </th>
-                    <th>
-                       Trạng thái
-                    </th>
-                    <th>
-                    </th>
-                  </tr>
-                </thead>
-                @foreach($order1 as $lc)
-                <tbody>
-                <tr>
-                    <td>
-                       {{$lc->id}}
-                    </td>
-                    <td style="width: 150px;">
-                       {{$lc->name}}
-                    </td>
-                    <td>
-                       {{$lc->phone_number}}
-                    </td>
-                    <td style="width: 250px;">
-                       {{$lc->order_address}}
-                    </td>
-                    <td style="width: 200px;">
-                       {{$lc->note}}
-                    </td>
-                    <td>
-                       {{$lc->order_date}}
-                    </td>
-                    <td>
-                       {{$lc->sent_date}}
-                    </td>
-                    <td>
-                       {{$lc->total_price}} VNĐ
-                    </td>
-                    <td>
-                       @isset($lc->shipper->name)
-                        {{$lc->shipper->name}}
-                       @endisset
-                    </td>
-                    <td>
-                      @if($lc->status == 1)
-                       <p class="btn btn-info">Đang giao hàng</p>
-                      @endif
-                    </td>
-                    <td>
-                      <a href="{{route('cart.edit', ['id' => $lc->id])}}" class="btn btn-primary">
-                      <i class="fa fa-edit"></i> Sửa </a>
-                      <a href="{{route('homecartdetail', ['id' => $lc->id])}}" class="btn btn-success">
-                      <i class="fa fa-edit"></i> Chi tiết </a>
-                    </td>
-                  </tr>
-                </tbody>
-                @endforeach
-                @if($order1 != null)
-                <tr>
-                  <td colspan="13" class="text-center">{{$order1->links()}}</td>
-                </tr>
-                @endif
-                </table>
-              </div>
-              </div>
-              <div class="tab-pane" id="tab_3">
-                <div class="portlet-body flip-scroll">
-                <table class="table table-striped">
-                <thead class="flip-content">
-                <tr>
-                    <th>
-                       ID
-                    </th>
-                    <th>
-                       Tên khách hàng
-                    </th>
-                    <th>
-                       Số điện thoại
-                    </th>
-                    <th>
-                       Địa chỉ nhận
-                    </th>
-                    <th>
-                       Lời nhắn
-                    </th>
-                    <th>
-                       Ngày nhận
-                    </th>
-                    <th>
-                       Ngày gửi
-                    </th>
-                    <th>
-                       Tổng tiền
-                    </th>
-                    <th>
-                       Người giao hàng
-                    </th>
-                    <th>
-                       Trạng thái
-                    </th>
-                    <th>
-                    </th>
-                  </tr>
-                </thead>
-                @foreach($order2 as $lc)
-                <tbody>
-                <tr>
-                    <td>
-                       {{$lc->id}}
-                    </td>
-                    <td style="width: 150px;">
-                       {{$lc->name}}
-                    </td>
-                    <td>
-                       {{$lc->phone_number}}
-                    </td>
-                    <td style="width: 250px;">
-                       {{$lc->order_address}}
-                    </td>
-                    <td style="width: 200px;">
-                       {{$lc->note}}
-                    </td>
-                    <td>
-                       {{$lc->order_date}}
-                    </td>
-                    <td>
-                       {{$lc->sent_date}}
-                    </td>
-                    <td>
-                       {{$lc->total_price}} VNĐ
-                    </td>
-                    <td>
-                       @isset($lc->shipper->name)
-                        {{$lc->shipper->name}}
-                       @endisset
-                    </td>
-                    <td>
-                      @if($lc->status == 2)
-                       <p class="btn btn-success">Đã giao</p>
-                      @endif
-                    </td>
-                    <td>
-                      <a href="{{route('cart.edit', ['id' => $lc->id])}}" class="btn btn-primary">
-                      <i class="fa fa-edit"></i> Sửa </a>
-                      <a href="{{route('homecartdetail', ['id' => $lc->id])}}" class="btn btn-success">
-                      <i class="fa fa-edit"></i> Chi tiết </a>
-                    </td>
-                  </tr>
-                </tbody>
-                @endforeach
-               @if($order2 != null)
-                <tr>
-                  <td colspan="13" class="text-center">{{$order2->links()}}</td>
-                </tr>
-                @endif
-                </table>
-              </div>
-              </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <!-- BEGIN CONDENSED TABLE PORTLET-->
+                        <div class="portlet box green">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-picture"></i>Danh sách đơn hàng
+                                </div>
+                            </div>
+                            <div class="portlet-body flip-scroll">
+                                <a href="{{route('product.add')}}" class="btn btn-primary">
+                                    <i class="fa fa-plus "></i> Thêm</a>
+                                <table class="table table-striped " id="listOrders">
+                                    <thead class="flip-content">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Ngày đặt</th>
+                                        <th>Ngày gửi </th>
+                                        <th>Trạng thái </th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- END CONDENSED TABLE PORTLET-->
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <!-- END PAGE CONTENT-->
-          </div>
     </div>
-  </div>
 
-    </div>
-</div>
-@endsection();
+@endsection
+@section('scripts')
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script>
+        $(function () {
+            listOrders = $('#listOrders').DataTable(
+                {
+                    dom: 'lifrtBp',
+                    processing: true,
+                    serverSide: true,
+                    ajax: {
+                        url: route('orders.getData'),
+                    },
+                    buttons: [
+                        'excel',
+                    ],
+                    columns: [
+                        {data:'id', name: 'id'},
+                        {data: 'name', name: 'name'},
+                        {data: 'phone_number', name: 'phone_number'},
+                        {data: 'total_price',
+                            name: 'total_price',
+                            render: function(data) {
+                                return data+" VNĐ";
+                            }
+                        },
+                        {data: 'order_address', name: 'order_address'},
+                        {data: 'order_date', name: 'order_date'},
+                        {data: 'updated_at', name: 'updated_at'},
+                        {
+                            data: 'status',
+                            name: 'status',
+                            render: function ( data, type, full, meta ) {
+                                return data ? "Chưa xử lý " : "Đang giao hàng";
+                            }
+                        },
+                        { "data": "action",
+                            "name": "action",
+                            "orderable": false,
+                            "searchable": false,
+
+                        },
+                    ],
+                    columnDefs: [
+                        {
+                            'targets': 0,
+                            'checkboxes': {
+                                'selectRow': true
+                            }
+                        }
+                    ],
+                    "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+                    select: {
+                        'style': 'multi'
+                    },
+                    order: [1, 'asc'],
+
+                }
+            );
+        });
+        $(function() {
+            $.getScript("{{asset('js/bootstrap-confirm-delete.js')}}", function(){
+                $('.delete').bootstrap_confirm_delete({
+                    heading: 'Delete',
+                    message: 'Bạn có chắc chắn muốn xóa không?'
+                });
+            });
+        });
+    </script>
+@endsection

@@ -23,7 +23,7 @@
             <?php $i=0; ?>
             @foreach($slideshow as $sl)
             @if($sl->status == 1)
-            <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}" 
+            <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}"
 
             @if($i == 0)
             class="active"
@@ -37,7 +37,7 @@
             <?php $i=0; ?>
             @foreach($slideshow as $sl)
             @if($sl->status == 1)
-            <div 
+            <div
             @if($i == 0)
             class="carousel-item active"
             @else
@@ -49,7 +49,7 @@
             </div>
             @endif
             @endforeach
-            
+
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -255,7 +255,7 @@
                                    {{$spkm->price}} VNĐ
                                 </strike>
                             </span>
-                            
+
                                 {{$spkm->sell_price}} VNĐ
                         </div>
                     </div>

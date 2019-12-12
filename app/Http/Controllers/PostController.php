@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Http\Requests\PostRequest;
 use DB;
+use Yajra\DataTables\DataTables;
+
 class PostController extends Controller
 {
     public function index(Request $request){
@@ -32,7 +34,7 @@ class PostController extends Controller
         $model = new Post();
         $dt = Carbon::now();
         if($request->hasFile('image')){
-           
+
             $oriFileName = $request->image->getClientOriginalName();
             $filename = str_replace(' ', '-', $oriFileName);
             $filename = uniqid() . '-' . $filename;
@@ -63,7 +65,7 @@ class PostController extends Controller
         $model = Post::find($request->id);
         $dt = Carbon::now();
         if($request->hasFile('image')){
-            $path = $request->file('image')->storeAs('products', 
+            $path = $request->file('image')->storeAs('products',
             str_replace(' ', '-', uniqid() . '-' .$request->image->getClientOriginalName()));
             $model->image = '../images/'.$path;
         }
@@ -80,7 +82,7 @@ class PostController extends Controller
         $model = Post::find($request->id);
         $dt = Carbon::now();
         if($request->hasFile('image')){
-            $path = $request->file('image')->storeAs('products', 
+            $path = $request->file('image')->storeAs('products',
             str_replace(' ', '-', uniqid() . '-' .$request->image->getClientOriginalName()));
             $model->image = '../images/'.$path;
         }
@@ -99,5 +101,32 @@ class PostController extends Controller
         $post= Post::find($id);
         $post->delete();
         return redirect(route('homepost'));
+    }
+
+    public function listPost()
+    {
+        return view('list-posts');
+    }
+
+    public function getData()
+    {
+        $posts = Post::select([
+            'id',
+            'title',
+            'author',
+            'image',
+            'views',
+            'updated_at',
+        ]);
+        return DataTables::of($posts)->addColumn('action',function($data){
+            $button = '<button class="btn btn-primary" name="edit" id="'.$data->id.'" >
+                        <a href="'. route('post.edit', $data->id) .'">Edit</a>
+                        </button>';
+            $button .= '<button class="btn btn-danger btnDelete" name="delete" id="'.$data->id.'" >
+                         <a href="'. route('post.remove', $data->id) .'">Delete</a>
+                        </button>';
+
+            return $button;
+        })->rawColumns(['action'])->make(true);
     }
 }

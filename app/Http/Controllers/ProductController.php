@@ -4,8 +4,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Category;
-use RealRashid\SweetAlert\Facades\Aler;
-Use Alert;
+use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\DataTables;
 class ProductController extends Controller
 {
     public function index(Request $request){
@@ -31,7 +31,7 @@ class ProductController extends Controller
     public function saveAddNew(ProductRequest $request){
         $model = new Product();
         if($request->hasFile('image')){
-           
+
             $oriFileName = $request->image->getClientOriginalName();
             $filename = str_replace(' ', '-', $oriFileName);
             $filename = uniqid() . '-' . $filename;
@@ -57,7 +57,7 @@ class ProductController extends Controller
     public function saveEdit(ProductRequest $request){
         $model = Product::find($request->id);
         if($request->hasFile('image')){
-            $path = $request->file('image')->storeAs('products', 
+            $path = $request->file('image')->storeAs('products',
             str_replace(' ', '-', uniqid() . '-' .$request->image->getClientOriginalName()));
             $model->image = '../images/'.$path;
         }
@@ -73,7 +73,7 @@ class ProductController extends Controller
     public function saveEdits(Request $request){
         $model = Product::find($request->id);
         if($request->hasFile('image')){
-            $path = $request->file('image')->storeAs('products', 
+            $path = $request->file('image')->storeAs('products',
             str_replace(' ', '-', uniqid() . '-' .$request->image->getClientOriginalName()));
             $model->image = '../images/'.$path;
         }
@@ -83,13 +83,37 @@ class ProductController extends Controller
         $model->fill($request->all());
         //dd($model);
         $model->save();
-        return redirect(route('home'));
+        return redirect(route('admin.product'));
     }
 
     // Xóa
     public function deletePost($id){
         $post= Product::find($id);
         $post->delete();
-        return redirect(route('home'));
+        return redirect(route('admin.product'));
+    }
+
+    public function listPr()
+    {
+        return view('listpr')->with('success_message','Test');
+    }
+
+    public function getData()
+    {
+        $product = Product::select([
+            'id',
+            'name',
+            'sell_price',
+            'image',
+            'views',
+        ]);
+        return DataTables::of($product)->addColumn('action',function($data){
+            $button = '<button class="btn btn-primary" name="edit" id="'.$data->id.'" >
+                        <a href="'. route('product.edit', $data->id) .'">Edit</a>
+                        </button>';
+            $button .= '<a href="'. route('product.remove', $data->id) .'" class="btn btn-danger red delete">Xóa</a>';
+
+            return $button;
+        })->rawColumns(['action'])->make(true);
     }
 }

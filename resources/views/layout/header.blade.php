@@ -37,5 +37,11 @@
 <script type="text/javascript"  src="{{ asset('ckfinder/ckfinder.js')}}"></script>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <link rel='stylesheet' type='text/css'
+          href='https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css">
+    <link rel='stylesheet' type='text/css'
+          href='https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.10/css/dataTables.checkboxes.css'>
 </head>
 <!-- END HEAD -->
